@@ -1,19 +1,12 @@
 package arraysslices
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 // go test -cover
 func TestSum(t *testing.T) {
-	// t.Run("coleção de 5 numeros", func(t *testing.T) {
-	// 	numbers := []int{1, 2, 3, 4, 5}
-	// 	got := Sum(numbers)
-	// 	want := 15
-
-	// 	if got != want {
-	// 		t.Errorf("got %d want %d given, %v", got, want, numbers)
-	// 	}
-	// })
-
 	t.Run("coleção de qualquer tamanho", func(t *testing.T) {
 		numbers := []int{1, 2, 3}
 
@@ -24,4 +17,13 @@ func TestSum(t *testing.T) {
 			t.Errorf("resultado %d, esperado %d, dado %v", resultado, esperado, numbers)
 		}
 	})
+}
+
+func TestSumAll(t *testing.T) {
+	result := SumAll([]int{1, 2}, []int{0, 9})
+	expect := []int{3, 9}
+
+	if !reflect.DeepEqual(result, expect) {
+		t.Errorf("result %v expect %v", result, expect)
+	}
 }
